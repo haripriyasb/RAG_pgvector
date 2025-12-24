@@ -72,3 +72,4 @@ coverage.xml
 
 # VS Code
 .vscode/
+.env
