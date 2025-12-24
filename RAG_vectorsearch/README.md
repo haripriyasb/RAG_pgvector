@@ -17,49 +17,68 @@ This project provides a Retrieval-Augmented Generation (RAG) system for searchin
 
 ### 1. Database Setup
 
+- Download PostgreSQL 3.11 here - https://www.python.org/downloads/
 - Ensure you have PostgreSQL installed and running.
-- Create a `.env` file in this folder with your database credentials:
-  ```
-  DB_HOST=localhost
-  DB_NAME=ai_learning
-  DB_USER=postgres
-  DB_PASSWORD=yourpassword
-  DB_PORT=5432
-  ANTHROPIC_API_KEY=your_claude_api_key
-  ANTHROPIC_MODEL=claude-3-5-sonnet-20241022
-  ```
+  
 - Run the database setup script:
   ```
   python setup_db.py
   ```
   This will create the `ai_learning` database, enable the `pgvector` extension, and set up the `sql_docs` table and indexes.
 
-### 2. Python Environment & Libraries
+###  2. Configure Environment Variables
 
-- Create and activate a Python virtual environment (recommended):
+Create a `.env` file in the project root:
+```env
+# Database Configuration
+DB_HOST=localhost
+DB_NAME=ai_learning
+DB_USER=postgres
+DB_PASSWORD=your_postgres_password
+DB_PORT=5432
+
+# Claude API Configuration
+ANTHROPIC_API_KEY=sk-ant-your-api-key-here
+```
+### 3. Get Claude API key
+
+1. Sign up at https://console.anthropic.com/
+2. Navigate to API Keys
+3. Create new key
+4. Copy to `.env` file
+   
+### 4. Python Environment & Libraries
+
+- Create and activate a Python virtual environment:
   ```
   python -m venv venv
-  source venv/bin/activate  # On Windows: venv\Scripts\activate
+  venv\Scripts\activate
   ```
 - Install required libraries:
   ```
   pip install psycopg2-binary pgvector python-dotenv sentence-transformers streamlit anthropic
   ```
 
-### 3. Load Document Files
+### 5. Load Document Files
 
-- Use the loader scripts to ingest documents into the database:
-  - `load_microsoft_docs.py`: Loads Microsoft documentation articles.
+- These are the loader scripts to ingest documents into the database:
+  
   - `load_runbooks.py`: Loads runbook documents.
   - `load_servicenow_mock.py`: Loads mock ServiceNow incidents.
+  - `load_microsoft_docs.py`: Loads Microsoft documentation articles.
+  
 
-  Run each script as needed:
+  Run each script:
   ```
   python load_microsoft_docs.py
   python load_runbooks.py
   python load_servicenow_mock.py
   ```
-
+  Verify data loaded:
+ 
+  ```
+   psql -U postgres -d ai_learning -c "SELECT source, COUNT(*) FROM sql_docs GROUP BY source;"
+  ```
 ### 4. Setup Claude API
 
 - Get your Claude API key from Anthropic and add it to your `.env` file as `ANTHROPIC_API_KEY`.
