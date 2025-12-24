@@ -1,7 +1,7 @@
-# RAG_vectorsearch
-RAG Vector Search System  
+# RAG Vector Search System  
 
-This project provides a Retrieval-Augmented Generation (RAG) system for searching ServiceNow incidents, runbooks and SQL Server documentation using vector search and conversational AI (Claude API).
+
+This project provides a Retrieval-Augmented Generation (RAG) system for searching ServiceNow incidents, runbooks and SQL Server documentation all in one place, using vector search and conversational AI (Claude API).
 
 ## Setup Instructions
 
