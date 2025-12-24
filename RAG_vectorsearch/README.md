@@ -39,6 +39,7 @@ DB_PORT=5432
 
 # Claude API Configuration
 ANTHROPIC_API_KEY=sk-ant-your-api-key-here
+ Set the model name (e.g., `claude-3-5-sonnet-20241022`) as `ANTHROPIC_MODEL` in `.env`.
 ```
 ### 3. Get Claude API key
 
@@ -79,10 +80,8 @@ ANTHROPIC_API_KEY=sk-ant-your-api-key-here
   ```
    psql -U postgres -d ai_learning -c "SELECT source, COUNT(*) FROM sql_docs GROUP BY source;"
   ```
-### 4. Setup Claude API
 
-- Get your Claude API key from Anthropic and add it to your `.env` file as `ANTHROPIC_API_KEY`.
-- Set the model name (e.g., `claude-3-5-sonnet-20241022`) as `ANTHROPIC_MODEL` in `.env`.
+-
 
 ### 5. Run the Application
 
@@ -95,11 +94,4 @@ ANTHROPIC_API_KEY=sk-ant-your-api-key-here
   streamlit run app_conversational.py
   ```
 
-## Notes
-- Do NOT commit your `.env` file to git (contains secrets).
-- The archive folder is ignored by git and contains old scripts for reference.
-- For troubleshooting, check your database connection and API keys.
 
----
-
-For questions or issues, contact the project maintainer.
