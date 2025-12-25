@@ -28,7 +28,7 @@ This project provides a Retrieval-Augmented Generation (RAG) system for searchin
 
 ###  2. Configure Environment Variables
 
-Create a `.env` file in the project root:
+In .env file in the project root folder, add database password, api key and model name. 
 ```env
 # Database Configuration
 DB_HOST=localhost
@@ -39,13 +39,13 @@ DB_PORT=5432
 
 # Claude API Configuration
 ANTHROPIC_API_KEY=sk-ant-your-api-key-here
- Set the model name (e.g., `claude-3-5-sonnet-20241022`) as `ANTHROPIC_MODEL` in `.env`.
+ANTHROPIC_MODEL=claude-3-5-sonnet-20241022
 ```
 ### 3. Get Claude API key
 
 1. Sign up at https://console.anthropic.com/
 2. Navigate to API Keys
-3. Create new key
+3. Create new key and save it in a secure file
 4. Copy to `.env` file
    
 ### 4. Python Environment & Libraries
@@ -80,12 +80,14 @@ ANTHROPIC_API_KEY=sk-ant-your-api-key-here
   ```
    psql -U postgres -d ai_learning -c "SELECT source, COUNT(*) FROM sql_docs GROUP BY source;"
   ```
+### 5. Setup web interface
 
--
+- pip install streamlit
+
 
 ### 5. Run the Application
 
-- For the command-line agent:
+- Run from command line, without web interface:
   ```
   python agent_app.py
   ```
