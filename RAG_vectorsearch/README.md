@@ -80,10 +80,6 @@ ANTHROPIC_MODEL=claude-3-5-sonnet-20241022
   ```
    psql -U postgres -d ai_learning -c "SELECT source, COUNT(*) FROM sql_docs GROUP BY source;"
   ```
-### 5. Setup web interface
-
-- pip install streamlit
-
 
 ### 5. Run the Application
 
