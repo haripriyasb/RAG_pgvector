@@ -107,21 +107,13 @@ EMBEDDING_DIMENSIONS=384
 
 ## 📊 Loading Data
 
-### Load Sample ServiceNow Incidents
+### Load Sample ServiceNow Incidents and runbooks
 
 ```bash
    python load_microsoft_docs.py
    python load_runbooks.py
    python load_servicenow_mock.py
 ```
-
-### Load Your Own Documents
-
-Modify the data loading scripts to point to your:
-- ServiceNow incident exports (JSON/CSV)
-- Confluence page exports (HTML/Markdown)
-- Runbook documents (PDF/TXT/Markdown)
-- RCA reports (TXT/DOCX)
 
 The system will:
 1. Extract text from documents
@@ -133,9 +125,9 @@ The system will:
 ### Command Line Interface
 
 ```bash
- # Run CLI agent 
+   # Run CLI agent 
    python agent_app.py
-```
+
 
 # Example queries:
 # "transaction log growing"
@@ -146,16 +138,16 @@ The system will:
 ### Web Interface (Streamlit)
 
 ```bash
-# Start the Streamlit app
+   # Start the Streamlit app
    streamlit run app_conversational.py
-```
+
 
 # Open browser to http://localhost:8501
 ```
 
 ### Example Queries
 
-```
+```bash
 Q: "Any incidents on AlwaysOn?"
 A: There was an incident on Nov 15 where the AlwaysOn replica went into 
    "Not Synchronizing" state. Root cause was network latency between replicas. 
@@ -175,52 +167,7 @@ A: SQLPROD01 uses log shipping to DR site with 15-minute RPO.
    Automatic failover is not configured.
    [Link to DR runbook]
 ```
-
-
-
-## 🔧 How It Works
-
-### Architecture Overview
-
-```
-User Query
-    ↓
-1. RETRIEVAL
-   Query → Sentence Transformer → Query Embedding (384 dimensions)
-   PostgreSQL + pgvector searches for similar document embeddings
-   Returns top 5 most relevant documents
-    ↓
-2. AUGMENTATION  
-   Query + Retrieved Documents → Formatted Prompt for Claude
-    ↓
-3. GENERATION
-   Claude API generates natural language response
-   Includes source attribution
-    ↓
-Final Response to User
-```
-
-### Semantic Search Explained
-
-Traditional keyword search:
-```
-Query: "performance"
-Matches: Only documents with exact word "performance"
-```
-
-Semantic search with pgvector:
-```
-Query: "performance" 
-Embedding: [0.234, -0.891, 0.456, ...]
-
-Matches documents with embeddings for:
-- "optimization" 
-- "tuning"
-- "speed improvements"
-- Related concepts, not just exact keywords
-```
-
-
+**Read the full blog post:** [Building a RAG Search System](https://gohigh.substack.com) 
 
 ## 📝 License
 
@@ -237,4 +184,4 @@ MIT License - Feel free to use this for your own projects!
 
 **Questions or Issues?** Reach out via [Substack](https://gohigh.substack.com)
 
-⭐ If you find this useful, please star the repository!
+
