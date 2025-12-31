@@ -154,15 +154,15 @@ EMBEDDING_DIMENSIONS=384
     # "AlwaysOn availability issues"
     # "tempdb performance problems"
 
-- Run from command line, without web interface:
+  # Run from command line, without web interface:
   
   python agent_app.py
  
-- For the Streamlit web interface:
+  # For the Streamlit web interface:
   
   streamlit run app_conversational.py
 
-# This opens browser to http://localhost:8501
+  # This opens browser to http://localhost:8501
 ````
 
 
