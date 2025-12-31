@@ -17,12 +17,9 @@ This system eliminates the need to hunt through multiple systems by providing in
 
 ## ✨ Features
 
-- **Semantic Search**: Find relevant documents based on meaning, not just keywords
-- **Conversational AI**: Ask questions in natural language and get contextual answers
-- **Multi-Source Integration**: Search across incident tickets, runbooks, knowledge base articles, and Confluence docs
-- **Concise Responses**: Get 2-3 sentence answers first, with option to elaborate
-- **Source Attribution**: Direct links to original documentation
-- **Web Interface**: Clean Streamlit UI for easy interaction
+An AI-powered search that lets you ask questions in natural language and find answers based on meaning, not just keywords.
+It searches across incidents, runbooks, knowledge bases, and Confluence, and returns concise 2–3 sentence answers with links to the original sources through a simple web UI.
+
 
 ## 🛠️ Tech Stack
 
@@ -96,7 +93,7 @@ pip install -r requirements.txt
 3. Create new key and save it in a secure file
 4. This will be needed in .env file
 
-### 3. Set Up PostgreSQL with pgvector
+### 4. Set Up PostgreSQL with pgvector
 
 - Download PostgreSQL 3.11 here - https://www.python.org/downloads/
 - Ensure you have PostgreSQL installed and running.
@@ -107,7 +104,7 @@ pip install -r requirements.txt
 
  This will create the `ai_learning` database, enable the `pgvector` extension, and set up the `sql_docs` table and indexes.
 
-### 4. Configure Environment Variables
+### 5. Configure Environment Variables
 
 Create a `.env` file in the project root:
 
@@ -127,7 +124,7 @@ EMBEDDING_MODEL=all-MiniLM-L6-v2
 EMBEDDING_DIMENSIONS=384
 ```
 
-### 5. Load Document Files
+### 6. Load Document Files
 
 - These are the loader scripts to ingest documents into the database:
   
@@ -149,7 +146,13 @@ EMBEDDING_DIMENSIONS=384
   ```
 
 
-### 5. Run the Application
+### 6. Run the Application
+
+ ```
+  # Example queries:
+    # "transaction log growing"
+    # "AlwaysOn availability issues"
+    # "tempdb performance problems"
 
 - Run from command line, without web interface:
   ```
@@ -158,23 +161,13 @@ EMBEDDING_DIMENSIONS=384
 - For the Streamlit web interface:
   ```
   streamlit run app_conversational.py
-  ```
+````
+# This opens browser to http://localhost:8501
 
 
-# Example queries:
-# "transaction log growing"
-# "AlwaysOn availability issues"
-# "tempdb performance problems"
-```
-
-### Web Interface (Streamlit)
-
-```bash
-   # Start the Streamlit app
-   streamlit run app_conversational.py
 
 
-# Open browser to http://localhost:8501
+
 ```
 
 ### Example Queries
