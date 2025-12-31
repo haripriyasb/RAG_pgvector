@@ -173,7 +173,7 @@ EMBEDDING_DIMENSIONS=384
 
 ### Example Queries
 
-```bash
+
 Q: "Any incidents on AlwaysOn?"
 A: There was an incident on Nov 15 where the AlwaysOn replica went into 
    "Not Synchronizing" state. Root cause was network latency between replicas. 
