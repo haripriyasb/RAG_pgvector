@@ -57,6 +57,16 @@ RAG_vectorsearch/
 
 ## 🚀 Installation
 
+### 0. Install Python
+
+- Download and install Python 3.11 or newer from the official website: https://www.python.org/downloads/
+- During installation, check the box to "Add Python to PATH".
+- Verify installation by running:
+  ```
+  python --version
+  ```
+  You should see the installed Python version.
+
 ### 1. Clone the Repository
 
 ```bash
@@ -79,11 +89,23 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+### 3. Get Claude API key
+
+1. Sign up at https://console.anthropic.com/
+2. Navigate to API Keys
+3. Create new key and save it in a secure file
+4. This will be needed in .env file
+
 ### 3. Set Up PostgreSQL with pgvector
+
+- Download PostgreSQL 3.11 here - https://www.python.org/downloads/
+- Ensure you have PostgreSQL installed and running.
 
 ```bash
    python setup_db.py
 ```
+
+ This will create the `ai_learning` database, enable the `pgvector` extension, and set up the `sql_docs` table and indexes.
 
 ### 4. Configure Environment Variables
 
@@ -105,28 +127,38 @@ EMBEDDING_MODEL=all-MiniLM-L6-v2
 EMBEDDING_DIMENSIONS=384
 ```
 
-## 📊 Loading Data
+### 5. Load Document Files
 
-### Load Sample ServiceNow Incidents and runbooks
+- These are the loader scripts to ingest documents into the database:
+  
+  - `load_runbooks.py`: Loads runbook documents.
+  - `load_servicenow_mock.py`: Loads mock ServiceNow incidents.
+  - `load_microsoft_docs.py`: Loads Microsoft documentation articles.
+  
 
-```bash
-   python load_microsoft_docs.py
-   python load_runbooks.py
-   python load_servicenow_mock.py
-```
+  Run each script:
+  ```
+  python load_microsoft_docs.py
+  python load_runbooks.py
+  python load_servicenow_mock.py
+  ```
+  Verify data loaded:
+ 
+  ```
+   psql -U postgres -d ai_learning -c "SELECT source, COUNT(*) FROM sql_docs GROUP BY source;"
+  ```
 
-The system will:
-1. Extract text from documents
-2. Generate embeddings using Sentence Transformers
-3. Store in PostgreSQL with vector embeddings
 
-## 🎮 Usage
+### 5. Run the Application
 
-### Command Line Interface
-
-```bash
-   # Run CLI agent 
-   python agent_app.py
+- Run from command line, without web interface:
+  ```
+  python agent_app.py
+  ```
+- For the Streamlit web interface:
+  ```
+  streamlit run app_conversational.py
+  ```
 
 
 # Example queries:
