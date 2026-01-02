@@ -103,6 +103,10 @@ pip install -r requirements.txt
 ```
 
  This will create the `ai_learning` database, enable the `pgvector` extension, and set up the `sql_docs` table and indexes.
+ - Verify connection:
+  ```
+   psql -U postgres -d ai_learning 
+  ```
 
 ### 5. Configure Environment Variables
 
