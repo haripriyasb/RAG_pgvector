@@ -199,9 +199,7 @@ A: SQLPROD01 uses log shipping to DR site with 15-minute RPO.
 ```
 **Read the full blog post:** [Building a RAG Search System](https://gohigh.substack.com) 
 
-## 📝 License
 
-MIT License - Feel free to use this for your own projects!
 
 ## 👤 Author
 
